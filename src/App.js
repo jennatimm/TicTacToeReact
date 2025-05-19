@@ -4,10 +4,10 @@ export default function Board() {
   //create an array to hold the 9 values
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [player, setPlayer] = useState(true);
-  const winner = calWinner(squares);
+  const endMessage = calWinner(squares);
   let status;
-  if (winner) {
-    status = "CONGRATS! Winner is " + winner + "!";
+  if (endMessage) {
+    status = endMessage;
   } else {
     status = "Next Player: " + (player ? "X" : "O");
   }
@@ -70,7 +70,21 @@ function calWinner(squares) {
       squares[a] == squares[b] &&
       squares[a] == squares[c]
     ) {
-      return squares[a];
+      return "Winner is: CONGRATS PLAYER " + squares[a] + "!";
+    }
+    //if no spots avaible the its a tie
+    if (
+      squares[0] &&
+      squares[1] &&
+      squares[2] &&
+      squares[3] &&
+      squares[4] &&
+      squares[5] &&
+      squares[6] &&
+      squares[7] &&
+      squares[8]
+    ) {
+      return "ITS A TIE!";
     }
   }
   return null;
