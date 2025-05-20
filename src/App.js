@@ -21,7 +21,7 @@ export default function Board() {
     setPlayer(!player);
     setSquares(nextSquares);
   }
-  function handleReset(squares) {
+  function handleReset() {
     const nextSquares = squares.slice();
     for (let id = 0; id < 9; id++) {
       nextSquares[id] = null;
@@ -48,7 +48,7 @@ export default function Board() {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
-      <button className="reset" onClick={() => handleReset(squares)}>
+      <button className="reset" onClick={handleReset}>
         Reset
       </button>
     </>
