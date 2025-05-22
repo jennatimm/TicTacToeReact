@@ -61,7 +61,13 @@ function Square({ value, onSquareClick }) {
     </button>
   );
 }
-
+const moves = history.map((squares, move) => {
+  return (
+    <li key={move}>
+      <button onClick={() => jumpTo(move)}>{description}</button>
+    </li>
+  );
+});
 function calWinner(squares) {
   const winningCombos = [
     [0, 1, 2],
